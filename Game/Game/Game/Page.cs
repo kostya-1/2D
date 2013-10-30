@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Game
 {
-    public enum States { idle, run, jump }
+    public enum States { idle, walk, run, jump }
     
     class Page
     {

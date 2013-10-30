@@ -47,7 +47,7 @@ namespace Game
             this.rectungle = states[state].rectangles[(int)frameIndex];
             this.origin = states[state].origins[(int)frameIndex];
             //frameIndex = (double)(frameIndex / frameRate);
-            Thread.Sleep(states[state].frames * 25);
+            Thread.Sleep(150);
             frameIndex++;
             frameIndex %= states[state].frames;
             base.draw();

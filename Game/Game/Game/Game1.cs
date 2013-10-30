@@ -15,11 +15,17 @@ namespace Game
     {
         GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
+        public static ContentManager contentManager;
+        Animate moshe;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 480;
+            graphics.PreferredBackBufferWidth = 800;
+
             Content.RootDirectory = "Content";
+            contentManager = this.Content;
         }
 
         protected override void Initialize()
@@ -35,6 +41,16 @@ namespace Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            string name = "moshe";
+            string state = "run";
+            Vector2 position = new Vector2(400, 240);
+            Color color = Color.White;
+            float rotation = 0f;
+            Vector2 origin = new Vector2(31,57);
+            Vector2 scale = new Vector2(1f);
+            SpriteEffects effects = SpriteEffects.None;
+            float layer = 0f;
+            moshe = new Animate(name,state, position, null, color, rotation, origin, scale, effects, layer);
         }
 
         protected override void UnloadContent()
@@ -58,6 +74,11 @@ namespace Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            moshe.draw();
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

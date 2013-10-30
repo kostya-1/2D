@@ -1,0 +1,8 @@
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\no.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\run.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Game.exe
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Game.pdb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\obj\x86\Debug\Game.csprojResolveAssemblyReference.cache
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\obj\x86\Debug\Game.exe
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\obj\x86\Debug\Game.pdb

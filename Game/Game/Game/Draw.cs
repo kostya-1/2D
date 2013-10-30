@@ -14,12 +14,12 @@ namespace Game
     class Draw
     {
         #region data
-        Texture2D texture;
+        public Texture2D texture;
         Vector2 position;
-        Rectangle? rectungle;
+        public Rectangle? rectungle;
         Color color;
         float rotation;
-        Vector2 origin;
+        public Vector2 origin;
         Vector2 scale;
         SpriteEffects effects;
         float layer;
@@ -42,7 +42,7 @@ namespace Game
 
         #endregion
 
-        public void draw()
+        public virtual void draw()
         {
             Game1.spriteBatch.Draw(texture, position, rectungle, color, rotation, origin, scale, effects, layer);
         }

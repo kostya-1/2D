@@ -21,7 +21,6 @@ namespace Game
         //string name, state;
         public Texture2D animatedTexture;
         Rectangle lowestRectangle; // is the rectangle of the dot's.
-        Color[] cols; // this array is for the colors on the dot's rectungle.
         List<int> dots = new List<int>(); // this list is for the dot's X coordinate on the dot's rectungle.
         public List<Rectangle> rectangles = new List<Rectangle>(); // this list is for the new rectungles, each rectungle is a diffirent frame from the sprite sheet.       
         public List<Vector2> origins = new List<Vector2>(); // this list is for each origin point of the new retungles.
@@ -34,11 +33,23 @@ namespace Game
         public Page(string name, string state )
         {
             animatedTexture = Game1.contentManager.Load<Texture2D>(name + '/' + state);
-
+            make_transparent();
             prepare_frames();
         }
 
         #endregion
+
+        void make_transparent()
+        {
+            Color[] colors; // this array is for the colors on the whole texture.
+            colors = new Color[animatedTexture.Width * animatedTexture.Height];
+            animatedTexture.GetData<Color>(colors);
+            for (int i = 1; i < colors.Length; i++)
+                if (colors[i] == colors[0])
+                    colors[i] = Color.Transparent;
+            colors[0] = Color.Transparent;
+            animatedTexture.SetData<Color>(colors);
+        }
 
         void prepare_frames()
         {
@@ -49,11 +60,13 @@ namespace Game
 
         void find_dots()
         {
-            cols = new Color[animatedTexture.Width];
+            
+            Color[] colors; // this array is for the colors on the dot's rectungle.
+            colors = new Color[animatedTexture.Width];
             lowestRectangle = new Rectangle(0, animatedTexture.Height - 1, animatedTexture.Width, 1);
-            animatedTexture.GetData<Color>(0, lowestRectangle, cols, 0, animatedTexture.Width);
-            for (int i = 0; i < cols.Length; i++)
-                if (cols[i] == Color.Black)
+            animatedTexture.GetData<Color>(0, lowestRectangle, colors, 0, animatedTexture.Width);
+            for (int i = 0; i < colors.Length; i++)
+                if (colors[i] == Color.Black)
                     dots.Add(i);
         }
 

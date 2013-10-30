@@ -42,7 +42,7 @@ namespace Game
 
             // TODO: use this.Content to load your game content here
             string name = "moshe";
-            string state = "run";
+            string state = "idle";
             Vector2 position = new Vector2(400, 240);
             Color color = Color.White;
             float rotation = 0f;

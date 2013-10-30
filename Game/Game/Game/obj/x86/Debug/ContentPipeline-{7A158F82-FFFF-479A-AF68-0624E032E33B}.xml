@@ -2,22 +2,31 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>moshe\no.png</Source>
-      <Name>moshe\no</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\no.xnb</Output>
-      <Time>2013-10-30T14:17:46.9401097+00:00</Time>
-    </Item>
-    <Item>
       <Source>moshe\run.png</Source>
       <Name>moshe\run</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\run.xnb</Output>
-      <Time>2013-10-30T14:17:51.7663081+00:00</Time>
+      <Time>2013-10-30T17:33:21.8821804+00:00</Time>
+    </Item>
+    <Item>
+      <Source>moshe\idle.png</Source>
+      <Name>moshe\idle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\idle.xnb</Output>
+      <Time>2013-10-30T18:01:35.8732408+00:00</Time>
+    </Item>
+    <Item>
+      <Source>moshe\walk.png</Source>
+      <Name>moshe\walk</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\walk.xnb</Output>
+      <Time>2013-10-30T17:33:25.6026429+00:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

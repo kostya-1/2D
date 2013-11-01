@@ -28,7 +28,6 @@ namespace Game
         SpriteEffects effects = SpriteEffects.None;
         float layer = 0f;
         int frameIndex = 0;
-        Thread down;
 
         #endregion
 
@@ -38,7 +37,6 @@ namespace Game
         {
             this.name = name;
             player = new GameObject(name, defaultState, position, null, color, rotation, origin, scale, effects, layer);
-            down = new Thread(new ThreadStart(player.move_down));
         }
 
         #endregion
@@ -57,7 +55,7 @@ namespace Game
             //frameIndex++;
             //frameIndex %= player.states[player.state].frames;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space))
             {
                 player.state = "walk";
                 player.origin = player.states[player.state].flipedOrigins[frameIndex];
@@ -65,13 +63,29 @@ namespace Game
                 player.walk_left();
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space))
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.None;
                 player.walk_right();
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Space))
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                player.state = "run";
+                player.origin = player.states[player.state].flipedOrigins[frameIndex];
+                player.effects = SpriteEffects.FlipHorizontally;
+                player.run_left();
+            }
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                player.state = "run";
+                player.effects = SpriteEffects.None;
+                player.run_right();
+            }
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 player.jump();
             }

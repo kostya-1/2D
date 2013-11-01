@@ -15,13 +15,13 @@ namespace Game
     {
         #region data
         public Texture2D texture;
-        Vector2 position;
+        public Vector2 position;
         public Rectangle? rectungle;
         Color color;
         float rotation;
         public Vector2 origin;
         Vector2 scale;
-        SpriteEffects effects;
+        public SpriteEffects effects;
         float layer;
         #endregion
 

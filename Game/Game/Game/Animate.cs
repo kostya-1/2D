@@ -16,10 +16,9 @@ namespace Game
 
         #region data
 
-        string state;
-        Dictionary<string, Page> states = new Dictionary<string, Page>();
-        double frameIndex = 0;
-        double frameRate = 3;
+        public string state;
+        public Dictionary<string, Page> states = new Dictionary<string, Page>();
+        int frameIndex = 0;
 
         #endregion
 
@@ -44,8 +43,8 @@ namespace Game
         public override void draw()
         {
             this.texture = states[state].animatedTexture;
-            this.rectungle = states[state].rectangles[(int)frameIndex];
-            this.origin = states[state].origins[(int)frameIndex];
+            this.rectungle = states[state].rectangles[frameIndex];
+            this.origin = states[state].origins[frameIndex];
             //frameIndex = (double)(frameIndex / frameRate);
             Thread.Sleep(150);
             frameIndex++;

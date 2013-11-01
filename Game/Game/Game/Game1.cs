@@ -16,7 +16,7 @@ namespace Game
         GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
         public static ContentManager contentManager;
-        Animate moshe;
+        Player moshe;
 
         public Game1()
         {
@@ -42,15 +42,15 @@ namespace Game
 
             // TODO: use this.Content to load your game content here
             string name = "moshe";
-            string state = "idle";
-            Vector2 position = new Vector2(400, 240);
-            Color color = Color.White;
-            float rotation = 0f;
-            Vector2 origin = new Vector2(31,57);
-            Vector2 scale = new Vector2(1f);
-            SpriteEffects effects = SpriteEffects.None;
-            float layer = 0f;
-            moshe = new Animate(name,state, position, null, color, rotation, origin, scale, effects, layer);
+            //string state = "idle";
+            //Vector2 position = new Vector2(400, 240);
+            //Color color = Color.White;
+            //float rotation = 0f;
+            //Vector2 origin = new Vector2(31,57);
+            //Vector2 scale = new Vector2(1f);
+            //SpriteEffects effects = SpriteEffects.None;
+            //float layer = 0f;
+            moshe = new Player(name);
         }
 
         protected override void UnloadContent()
@@ -61,10 +61,11 @@ namespace Game
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
             // TODO: Add your update logic here
+            moshe.update();
 
             base.Update(gameTime);
         }
@@ -76,7 +77,7 @@ namespace Game
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            moshe.draw();
+            moshe.player.draw();
 
             spriteBatch.End();
 

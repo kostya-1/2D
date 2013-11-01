@@ -28,6 +28,15 @@
       <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\walk.xnb</Output>
       <Time>2013-10-30T17:33:25.6026429+00:00</Time>
     </Item>
+    <Item>
+      <Source>moshe\jump.png</Source>
+      <Name>moshe\jump</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\jump.xnb</Output>
+      <Time>2013-11-01T13:04:39.9895899+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{7A158F82-FFFF-479A-AF68-0624E032E33B}</ContentProjectGUID>

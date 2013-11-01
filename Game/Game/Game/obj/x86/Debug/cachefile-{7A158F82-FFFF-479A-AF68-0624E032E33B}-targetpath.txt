@@ -1,3 +1,4 @@
 Content\moshe\run.xnb
 Content\moshe\idle.xnb
 Content\moshe\walk.xnb
+Content\moshe\jump.xnb

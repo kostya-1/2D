@@ -35,20 +35,31 @@ namespace Game
             this.position.X -= 1;
         }
 
-        public void run_left()
-        {
-            this.position.X += 1.5f;
-        }
-
         public void run_right()
         {
-            this.position.X -= 1.5f;
+            this.position.X += 2f;
         }
 
-        public void jump()
+        public void run_left()
+        {
+            this.position.X -= 2f;
+        }
+
+        public bool jump(Vector2 gravity, bool hasJumped)
         {
 
             this.position.Y -= 1;
+            return true;
+        }
+
+        public void loop_position()
+        {
+            if (this.position.X > 820 && this.effects == SpriteEffects.None)
+                this.position.X = -20;
+
+            if (this.position.X < -20 && this.effects == SpriteEffects.FlipHorizontally)
+                this.position.X = 820;
+
         }
 
     }

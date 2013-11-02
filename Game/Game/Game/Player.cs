@@ -26,8 +26,11 @@ namespace Game
         Vector2 origin = new Vector2(31, 57);
         Vector2 scale = new Vector2(1f);
         SpriteEffects effects = SpriteEffects.None;
-        float layer = 0f;
+        float layer = 1f;
+
         int frameIndex = 0;
+        Vector2 gravity;
+        bool hasJumped = false;
 
         #endregion
 
@@ -87,13 +90,16 @@ namespace Game
 
             else if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                player.jump();
+                // http://www.youtube.com/watch?v=ZLxIShw-7ac
+                hasJumped = player.jump(gravity,hasJumped);
             }
 
             else
             {
                 player.state = defaultState;
             }
+
+            player.loop_position();
 
         }
     }

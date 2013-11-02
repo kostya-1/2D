@@ -17,6 +17,12 @@ namespace Game
         public static SpriteBatch spriteBatch;
         public static ContentManager contentManager;
         Player moshe;
+        Draw background;
+        Draw clouds1;
+        Draw clouds2;
+        Texture2D backgroundTexture;
+        Texture2D clouds1Texture;
+        Texture2D clouds2Texture;
 
         public Game1()
         {
@@ -51,6 +57,18 @@ namespace Game
             //SpriteEffects effects = SpriteEffects.None;
             //float layer = 0f;
             moshe = new Player(name);
+
+            #region background
+
+            backgroundTexture = Content.Load<Texture2D>("background/background");
+            clouds1Texture = Content.Load<Texture2D>("background/clouds1");
+            clouds2Texture = Content.Load<Texture2D>("background/clouds2");
+
+            background = new Draw(backgroundTexture, new Vector2(0,0), null, Color.White, 0, new Vector2(0,0), new Vector2(1f), SpriteEffects.None, 0);
+            clouds1 = new Draw(clouds1Texture, new Vector2(0,-150), null, Color.White, 0, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0);
+            clouds2 = new Draw(clouds2Texture, new Vector2(-800,-150), null, Color.White, 0, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0);
+            #endregion
+
         }
 
         protected override void UnloadContent()
@@ -67,6 +85,15 @@ namespace Game
             // TODO: Add your update logic here
             moshe.update();
 
+            //scrolling background
+            clouds1.position.X += 0.3f;
+            clouds2.position.X += 0.15f;
+
+            if (clouds1.position.X > graphics.PreferredBackBufferWidth)
+                clouds1.position.X = -(graphics.PreferredBackBufferWidth);
+            if (clouds2.position.X > graphics.PreferredBackBufferWidth)
+                clouds2.position.X = -(graphics.PreferredBackBufferWidth);
+
             base.Update(gameTime);
         }
 
@@ -77,6 +104,9 @@ namespace Game
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            background.draw();
+            clouds1.draw();
+            clouds2.draw();
             moshe.player.draw();
 
             spriteBatch.End();

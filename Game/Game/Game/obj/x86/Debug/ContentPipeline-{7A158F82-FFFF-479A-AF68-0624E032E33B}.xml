@@ -37,6 +37,33 @@
       <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\jump.xnb</Output>
       <Time>2013-11-01T13:04:39.9895899+00:00</Time>
     </Item>
+    <Item>
+      <Source>background\background.png</Source>
+      <Name>background\background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\background.xnb</Output>
+      <Time>2013-11-02T14:10:19.5920845+00:00</Time>
+    </Item>
+    <Item>
+      <Source>background\clouds1.png</Source>
+      <Name>background\clouds1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\clouds1.xnb</Output>
+      <Time>2013-11-02T14:25:53.7212005+00:00</Time>
+    </Item>
+    <Item>
+      <Source>background\clouds2.png</Source>
+      <Name>background\clouds2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\clouds2.xnb</Output>
+      <Time>2013-11-02T14:25:56.1037791+00:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{7A158F82-FFFF-479A-AF68-0624E032E33B}</ContentProjectGUID>

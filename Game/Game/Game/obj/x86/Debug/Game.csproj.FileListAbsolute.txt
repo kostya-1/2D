@@ -11,3 +11,7 @@ C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\clouds1.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\clouds2.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\fall.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\base.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\single.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\double.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\triple.xnb

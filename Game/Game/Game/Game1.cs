@@ -100,6 +100,10 @@ namespace Game
 
             clouds1.draw();
             clouds2.draw();
+            Plates.basePlate.draw();
+            Plates.singlePlate.draw();
+            Plates.doublePlate.draw();
+            Plates.triplePlate.draw();
             moshe.player.draw();
 
             spriteBatch.End();

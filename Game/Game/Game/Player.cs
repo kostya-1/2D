@@ -26,7 +26,7 @@ namespace Game
         Vector2 origin = new Vector2(31, 57);
         Vector2 scale = new Vector2(1f);
         SpriteEffects effects = SpriteEffects.None;
-        float layer = 1f;
+        float layer = 0f;
 
         bool hasJumped;
         bool onPlate;
@@ -59,16 +59,57 @@ namespace Game
 
             #region gravity
 
-            if (player.position.Y >= 400)
+            #region gravity for base plate
+
+            if (player.position.Y >= Plates.basePlate.position.Y + 6)
             {
                 velocity.Y = 0;
                 hasJumped = false;
                 onPlate = true;
+            } 
+
+            #endregion
+
+            #region gravity for the single plate
+
+            else if ((player.position.Y <= Plates.singlePlate.position.Y + 6 && player.position.Y >= Plates.singlePlate.position.Y) && (player.position.X >= Plates.singlePlate.position.X && player.position.X <= Plates.singlePlate.texture.Width + 20) && velocity.Y >= 0)
+            {
+                velocity.Y = 0;
+                onPlate = true;
+                hasJumped = false;
+
             }
+
+            #endregion
+
+            #region gravity for the double plate
+
+            else if ((player.position.Y <= Plates.doublePlate.position.Y + 6 && player.position.Y >= Plates.doublePlate.position.Y) && (player.position.X >= Plates.doublePlate.position.X && player.position.X <= Plates.doublePlate.texture.Width + 20) && velocity.Y >= 0)
+            {
+                velocity.Y = 0;
+                onPlate = true;
+                hasJumped = false;
+
+            }
+
+            #endregion
+
+            #region gravity for the triple plate
+
+            else if ((player.position.Y <= Plates.triplePlate.position.Y + 6 && player.position.Y >= Plates.triplePlate.position.Y) && (player.position.X >= Plates.triplePlate.position.X && player.position.X <= Plates.triplePlate.texture.Width + 20) && velocity.Y >= 0)
+            {
+                velocity.Y = 0;
+                onPlate = true;
+                hasJumped = false;
+
+            }
+
+            #endregion
 
             else if (player.position.Y < 400 && hasJumped == false)
             {
                 velocity.Y += 0.15f;
+                hasJumped = true;
                 onPlate = false;
             }
 
@@ -114,7 +155,7 @@ namespace Game
             #region jump
 
             #region jump left
-            
+
             // up + left
             else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
             {
@@ -165,12 +206,17 @@ namespace Game
                 hasJumped = true;
             }
 
-            #endregion
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            {
+                velocity.Y = -6f;
+                hasJumped = true;
+            }
 
+            #endregion
+                
             else if (hasJumped)
             {
                 player.state = "jump";
-                //velocity.X = 0;
                 velocity.Y += 0.15f;
 
                 if (velocity.Y > 0)
@@ -181,12 +227,10 @@ namespace Game
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Right))
                     player.effects = SpriteEffects.None;
-
-                //if (velocity.Y >= 4.4f)
-                //    velocity.X = 0;
             } 
 
-            #endregion
+            #endregion  
+                // got bug, velocity is not 0 when u jump left, and then jump up
 
             #region plates
 

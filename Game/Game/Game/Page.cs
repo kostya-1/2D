@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Game
 {
-    public enum States { idle, walk, run, jump }
+    public enum States { idle, walk, run, jump, fall }
     
     class Page
     {
@@ -81,10 +81,9 @@ namespace Game
 
         void find_origins()
         {
-            for (int i = 1; i < dots.Count; i++)
-                if (i % 2 != 0)
+            for (int i = 1; i < dots.Count; i+=2)
                 {
-                    origins.Add(new Vector2(dots[i] - dots[i-1], animatedTexture.Height-1));
+                    origins.Add(new Vector2(dots[i] - dots[i-1], animatedTexture.Height - 1));
                     flipedOrigins.Add(new Vector2(dots[i+1] - dots[i], animatedTexture.Height - 1));
                 }
         }

@@ -16,19 +16,23 @@ namespace Game
         GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
         public static ContentManager contentManager;
+        public static int height;
+        public static int width;
         Player moshe;
-        Draw background;
         Draw clouds1;
         Draw clouds2;
-        Texture2D backgroundTexture;
         Texture2D clouds1Texture;
         Texture2D clouds2Texture;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+
             graphics.PreferredBackBufferHeight = 480;
             graphics.PreferredBackBufferWidth = 800;
+
+            height = graphics.PreferredBackBufferHeight;
+            width = graphics.PreferredBackBufferWidth;
 
             Content.RootDirectory = "Content";
             contentManager = this.Content;
@@ -48,23 +52,13 @@ namespace Game
 
             // TODO: use this.Content to load your game content here
             string name = "moshe";
-            //string state = "idle";
-            //Vector2 position = new Vector2(400, 240);
-            //Color color = Color.White;
-            //float rotation = 0f;
-            //Vector2 origin = new Vector2(31,57);
-            //Vector2 scale = new Vector2(1f);
-            //SpriteEffects effects = SpriteEffects.None;
-            //float layer = 0f;
             moshe = new Player(name);
 
             #region background
 
-            backgroundTexture = Content.Load<Texture2D>("background/background");
             clouds1Texture = Content.Load<Texture2D>("background/clouds1");
             clouds2Texture = Content.Load<Texture2D>("background/clouds2");
 
-            background = new Draw(backgroundTexture, new Vector2(0,0), null, Color.White, 0, new Vector2(0,0), new Vector2(1f), SpriteEffects.None, 0);
             clouds1 = new Draw(clouds1Texture, new Vector2(0,-150), null, Color.White, 0, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0);
             clouds2 = new Draw(clouds2Texture, new Vector2(-800,-150), null, Color.White, 0, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0);
             #endregion
@@ -104,7 +98,6 @@ namespace Game
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            background.draw();
             clouds1.draw();
             clouds2.draw();
             moshe.player.draw();

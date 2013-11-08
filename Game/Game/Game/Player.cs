@@ -17,7 +17,7 @@ namespace Game
 
         #region data
 
-        public GameObject player;
+        public Animate player;
         string name;
         string defaultState = "idle";
         Vector2 position = new Vector2(400, 240);
@@ -28,9 +28,9 @@ namespace Game
         SpriteEffects effects = SpriteEffects.None;
         float layer = 1f;
 
-        int frameIndex = 0;
-        Vector2 gravity;
-        bool hasJumped = false;
+        bool hasJumped;
+        bool onPlate;
+        Vector2 velocity = new Vector2(0);
 
         #endregion
 
@@ -39,67 +39,172 @@ namespace Game
         public Player(string name)
         {
             this.name = name;
-            player = new GameObject(name, defaultState, position, null, color, rotation, origin, scale, effects, layer);
+            player = new Animate(name, defaultState, position, null, color, rotation, origin, scale, effects, layer);
         }
 
         #endregion
+
         public void update()
         {
-            //switch ()
-            //
-            //    default:
-            //}
+          
+            #region loop position
 
-            //player.texture = player.states[player.state].animatedTexture;
-            //player.rectungle = player.states[player.state].rectangles[frameIndex];
-            //player.origin = player.states[player.state].origins[frameIndex];
-            ////frameIndex = (double)(frameIndex / frameRate);
-            //Thread.Sleep(150);
-            //frameIndex++;
-            //frameIndex %= player.states[player.state].frames;
+            if (player.position.X > Game1.width + 20 )
+                player.position.X = -20;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space))
+            if (player.position.X < -20 )
+                player.position.X = Game1.width + 20;
+
+            #endregion
+
+            #region gravity
+
+            if (player.position.Y >= 400)
             {
-                player.state = "walk";
-                player.origin = player.states[player.state].flipedOrigins[frameIndex];
-                player.effects = SpriteEffects.FlipHorizontally;
-                player.walk_left();
+                velocity.Y = 0;
+                hasJumped = false;
+                onPlate = true;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space))
+            else if (player.position.Y < 400 && hasJumped == false)
+            {
+                velocity.Y += 0.15f;
+                onPlate = false;
+            }
+
+            #endregion
+
+            #region left movment
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
+            {
+                player.state = "walk";
+                player.effects = SpriteEffects.FlipHorizontally;
+                velocity.X = -1f;
+            }
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
+            {
+                player.state = "run";
+                player.effects = SpriteEffects.FlipHorizontally;
+                velocity.X = -3f;
+            }
+
+            #endregion
+
+            #region right movment
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.None;
-                player.walk_right();
+                velocity.X = 1f;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                player.state = "run";
-                player.origin = player.states[player.state].flipedOrigins[frameIndex];
-                player.effects = SpriteEffects.FlipHorizontally;
-                player.run_left();
-            }
-
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space))
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
             {
                 player.state = "run";
                 player.effects = SpriteEffects.None;
-                player.run_right();
+                velocity.X = 3f;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up))
+
+            #endregion
+
+            #region jump
+
+            #region jump left
+            
+            // up + left
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
             {
-                // http://www.youtube.com/watch?v=ZLxIShw-7ac
-                hasJumped = player.jump(gravity,hasJumped);
+                player.effects = SpriteEffects.FlipHorizontally;
+                velocity.Y = -5f;
+                velocity.X = -1f;
+                hasJumped = true;
             }
 
-            else
+            // up + left + space
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            {
+                player.effects = SpriteEffects.FlipHorizontally;
+                velocity.Y = -5f;
+                velocity.X = -3f;
+                hasJumped = true;
+            }
+
+            #endregion
+
+            #region jump right
+
+            // up + left
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            {
+                player.effects = SpriteEffects.None;
+                velocity.Y = -5f;
+                velocity.X = 1f;
+                hasJumped = true;
+            }
+
+            // up + left + space
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            {
+                player.effects = SpriteEffects.None;
+                velocity.Y = -5f;
+                velocity.X = 3f;
+                hasJumped = true;
+            }
+
+            #endregion
+
+            #region jump up
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            {
+                velocity.Y = -5f;
+                hasJumped = true;
+            }
+
+            #endregion
+
+            else if (hasJumped)
+            {
+                player.state = "jump";
+                //velocity.X = 0;
+                velocity.Y += 0.15f;
+
+                if (velocity.Y > 0)
+                    player.state = "fall";
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                    player.effects = SpriteEffects.FlipHorizontally;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                    player.effects = SpriteEffects.None;
+
+                //if (velocity.Y >= 4.4f)
+                //    velocity.X = 0;
+            } 
+
+            #endregion
+
+            #region plates
+
+            else if (onPlate)
             {
                 player.state = defaultState;
+                velocity.X = 0;
             }
 
-            player.loop_position();
+            else if (!onPlate)
+            {
+                player.state = "fall";
+                hasJumped = true;
+            }
+
+            #endregion
+
+            player.position += velocity;
 
         }
     }

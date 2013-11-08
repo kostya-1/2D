@@ -18,7 +18,7 @@ namespace Game
 
         public string state;
         public Dictionary<string, Page> states = new Dictionary<string, Page>();
-        int frameIndex = 0;
+        public int frameIndex = 0;
 
         #endregion
 
@@ -42,13 +42,19 @@ namespace Game
 
         public override void draw()
         {
+            frameIndex %= states[state].frames;
             this.texture = states[state].animatedTexture;
             this.rectungle = states[state].rectangles[frameIndex];
-            this.origin = states[state].origins[frameIndex];
-            //frameIndex = (double)(frameIndex / frameRate);
-            Thread.Sleep(150);
+
+            if (this.effects == SpriteEffects.FlipHorizontally)
+                this.origin = states[state].flipedOrigins[frameIndex];
+
+            else
+                this.origin = states[state].origins[frameIndex];
+
+            Thread.Sleep(70);
             frameIndex++;
-            frameIndex %= states[state].frames;
+            
             base.draw();
         }
     }

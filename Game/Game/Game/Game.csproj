@@ -74,7 +74,6 @@
   <ItemGroup>
     <Compile Include="Animate.cs" />
     <Compile Include="Draw.cs" />
-    <Compile Include="GameObject.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

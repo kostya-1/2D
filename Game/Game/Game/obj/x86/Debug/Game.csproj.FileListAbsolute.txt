@@ -8,6 +8,6 @@ C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\obj\x86\Debug\Game.pdb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\idle.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\walk.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\jump.xnb
-C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\background.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\clouds1.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\background\clouds2.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\moshe\fall.xnb

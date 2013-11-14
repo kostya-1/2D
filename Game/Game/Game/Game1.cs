@@ -11,16 +11,23 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Game
 {
+    public delegate void update_signature();
+
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
         public static ContentManager contentManager;
+        public static event update_signature EVENT_UPDATE;
+
         public static int height;
         public static int width;
+
         Player moshe;
+
         Draw clouds1;
         Draw clouds2;
+
         Texture2D clouds1Texture;
         Texture2D clouds2Texture;
 
@@ -77,7 +84,7 @@ namespace Game
                 this.Exit();
 
             // TODO: Add your update logic here
-            moshe.update();
+            EVENT_UPDATE();
 
             //scrolling background
             clouds1.position.X += 0.3f;
@@ -100,10 +107,12 @@ namespace Game
 
             clouds1.draw();
             clouds2.draw();
-            Plates.basePlate.draw();
-            Plates.singlePlate.draw();
-            Plates.doublePlate.draw();
-            Plates.triplePlate.draw();
+
+            for (int i = 0; i < Plates.plates.Count; i++)
+            {
+                Plates.plates[i].draw();
+            }
+
             moshe.player.draw();
 
             spriteBatch.End();

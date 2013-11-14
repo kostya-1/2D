@@ -15,3 +15,8 @@ C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\single.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\double.xnb
 C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\triple.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\fall.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\idle.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\jump.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\run.xnb
+C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\walk.xnb

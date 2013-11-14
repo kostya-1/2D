@@ -13,9 +13,22 @@ namespace Game
 {
     static class Plates
     {
-        public static Draw basePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/base"), new Vector2(-20, (Game1.height - 30)), null, Color.White, 0f, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0f);
-        public static Draw singlePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/single"), new Vector2(30, (Game1.height - 130)), null, Color.White, 0f, new Vector2(0,0), new Vector2(1f), SpriteEffects.None, 0f);
-        public static Draw doublePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/double"), new Vector2(200, (Game1.height - 200)), null, Color.White, 0f, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0f);
-        public static Draw triplePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/triple"), new Vector2(460, (Game1.height - 100)), null, Color.White, 0f, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0f);
+
+        public static List<Draw> plates = new List<Draw>();
+
+        public static void Initialize()
+        {
+            Draw basePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/base"), new Vector2(-20, (Game1.height - 30)), null, Color.White, 0f, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0f);
+            plates.Add(basePlate);
+
+            Draw singlePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/single"), new Vector2(30, (Game1.height - 130)), null, Color.White, 0f, new Vector2(0,0), new Vector2(1f), SpriteEffects.None, 0f);
+            plates.Add(singlePlate);
+
+            Draw doublePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/double"), new Vector2(200, (Game1.height - 200)), null, Color.White, 0f, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0f);
+            plates.Add(doublePlate);
+
+            Draw triplePlate = new Draw(Game1.contentManager.Load<Texture2D>("plates/triple"), new Vector2(460, (Game1.height - 100)), null, Color.White, 0f, new Vector2(0, 0), new Vector2(1f), SpriteEffects.None, 0f);
+            plates.Add(triplePlate);
+        }
     }
 }

@@ -9,3 +9,8 @@ Content\plates\base.xnb
 Content\plates\single.xnb
 Content\plates\double.xnb
 Content\plates\triple.xnb
+Content\shimon\fall.xnb
+Content\shimon\idle.xnb
+Content\shimon\jump.xnb
+Content\shimon\run.xnb
+Content\shimon\walk.xnb

@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\base.xnb</Output>
-      <Time>2013-11-08T13:44:09.4605365+02:00</Time>
+      <Time>2013-11-14T12:50:27.5413924+02:00</Time>
     </Item>
     <Item>
       <Source>plates\single.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\single.xnb</Output>
-      <Time>2013-11-08T13:44:15.5696124+02:00</Time>
+      <Time>2013-11-14T12:50:27.5483944+02:00</Time>
     </Item>
     <Item>
       <Source>plates\double.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\double.xnb</Output>
-      <Time>2013-11-08T13:44:19.3531362+02:00</Time>
+      <Time>2013-11-14T12:50:27.5453923+02:00</Time>
     </Item>
     <Item>
       <Source>plates\triple.png</Source>
@@ -98,7 +98,52 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\plates\triple.xnb</Output>
-      <Time>2013-11-08T13:44:23.9381947+02:00</Time>
+      <Time>2013-11-14T12:50:27.5523978+02:00</Time>
+    </Item>
+    <Item>
+      <Source>shimon\fall.png</Source>
+      <Name>shimon\fall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\fall.xnb</Output>
+      <Time>2013-11-14T10:55:31.4510869+02:00</Time>
+    </Item>
+    <Item>
+      <Source>shimon\idle.png</Source>
+      <Name>shimon\idle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\idle.xnb</Output>
+      <Time>2013-11-14T10:55:31.4354899+02:00</Time>
+    </Item>
+    <Item>
+      <Source>shimon\jump.png</Source>
+      <Name>shimon\jump</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\jump.xnb</Output>
+      <Time>2013-11-14T10:55:31.4354899+02:00</Time>
+    </Item>
+    <Item>
+      <Source>shimon\run.png</Source>
+      <Name>shimon\run</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\run.xnb</Output>
+      <Time>2013-11-14T10:55:31.4510869+02:00</Time>
+    </Item>
+    <Item>
+      <Source>shimon\walk.png</Source>
+      <Name>shimon\walk</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kostya\Desktop\Programs\GitHub\2D\Game\Game\Game\bin\x86\Debug\Content\shimon\walk.xnb</Output>
+      <Time>2013-11-14T10:55:31.4510869+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

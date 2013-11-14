@@ -40,11 +40,15 @@ namespace Game
         {
             this.name = name;
             player = new Animate(name, defaultState, position, null, color, rotation, origin, scale, effects, layer);
+
+            Plates.Initialize();
+
+            Game1.EVENT_UPDATE += new update_signature(update);
         }
 
         #endregion
 
-        public void update()
+        void update()
         {
           
             #region loop position
@@ -58,73 +62,42 @@ namespace Game
             #endregion
 
             #region gravity
-
-            #region gravity for base plate
-
-            if (player.position.Y >= Plates.basePlate.position.Y + 6)
+            if (velocity.Y >= 0)
             {
-                velocity.Y = 0;
-                hasJumped = false;
-                onPlate = true;
-            } 
-
-            #endregion
-
-            #region gravity for the single plate
-
-            else if ((player.position.Y <= Plates.singlePlate.position.Y + 6 && player.position.Y >= Plates.singlePlate.position.Y) && (player.position.X >= Plates.singlePlate.position.X && player.position.X <= Plates.singlePlate.texture.Width + 20) && velocity.Y >= 0)
-            {
-                velocity.Y = 0;
-                onPlate = true;
-                hasJumped = false;
-
+                for (int i = 0; i < Plates.plates.Count; i++)
+                {
+                    if (player.position.Y <= Plates.plates[i].position.Y + 12 && player.position.Y >= Plates.plates[i].position.Y + 6)
+                    {
+                        if (player.position.X >= Plates.plates[i].position.X)
+                        {
+                            if (player.position.X <= (Plates.plates[i].position.X) + (Plates.plates[i].texture.Width + 10))
+                            {
+                                velocity.Y = 0;
+                                onPlate = true;
+                                hasJumped = false;
+                            }
+                            else
+                                onPlate = false;
+                        }
+                        else
+                            onPlate = false;
+                    }
+                }
             }
 
-            #endregion
-
-            #region gravity for the double plate
-
-            else if ((player.position.Y <= Plates.doublePlate.position.Y + 6 && player.position.Y >= Plates.doublePlate.position.Y) && (player.position.X >= Plates.doublePlate.position.X && player.position.X <= Plates.doublePlate.texture.Width + 20) && velocity.Y >= 0)
-            {
-                velocity.Y = 0;
-                onPlate = true;
-                hasJumped = false;
-
-            }
-
-            #endregion
-
-            #region gravity for the triple plate
-
-            else if ((player.position.Y <= Plates.triplePlate.position.Y + 6 && player.position.Y >= Plates.triplePlate.position.Y) && (player.position.X >= Plates.triplePlate.position.X && player.position.X <= Plates.triplePlate.texture.Width + 20) && velocity.Y >= 0)
-            {
-                velocity.Y = 0;
-                onPlate = true;
-                hasJumped = false;
-
-            }
-
-            #endregion
-
-            else if (player.position.Y < 400 && hasJumped == false)
-            {
-                velocity.Y += 0.15f;
-                hasJumped = true;
-                onPlate = false;
-            }
 
             #endregion
 
             #region left movment
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.FlipHorizontally;
                 velocity.X = -1f;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "run";
                 player.effects = SpriteEffects.FlipHorizontally;
@@ -135,14 +108,14 @@ namespace Game
 
             #region right movment
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.None;
                 velocity.X = 1f;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false)
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "run";
                 player.effects = SpriteEffects.None;
@@ -231,7 +204,6 @@ namespace Game
 
             #endregion  
                 // got bug, velocity is not 0 when u jump left, and then jump up
-
             #region plates
 
             else if (onPlate)

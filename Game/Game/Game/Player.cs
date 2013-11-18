@@ -31,6 +31,12 @@ namespace Game
         bool onPlate;
         Vector2 velocity = new Vector2(0);
 
+        KeyboardState state;
+        bool rightPressed;
+        bool leftPressed;
+        bool upPressed;
+        bool spacePressed;
+        bool isBot = false;
         #endregion
 
         #region constructor
@@ -49,7 +55,15 @@ namespace Game
 
         void update()
         {
-            KeyboardState state = Keyboard.GetState();
+            state = Keyboard.GetState();
+
+            if (!isBot)
+            {
+                rightPressed = check_right_key(state);
+                leftPressed = check_left_key(state);
+                upPressed = check_up_key(state);
+                spacePressed = check_space_key(state);
+            }
 
             #region loop position
 
@@ -90,14 +104,14 @@ namespace Game
 
             #region left movment
 
-            if (state.IsKeyDown(Keys.Left) && state.IsKeyUp(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            if (leftPressed && !spacePressed && !upPressed && hasJumped == false && onPlate)
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.FlipHorizontally;
                 velocity.X = -1f;
             }
 
-            else if (state.IsKeyDown(Keys.Left) && state.IsKeyDown(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            else if (leftPressed && spacePressed && !upPressed && hasJumped == false && onPlate)
             {
                 player.state = "run";
                 player.effects = SpriteEffects.FlipHorizontally;
@@ -108,14 +122,14 @@ namespace Game
 
             #region right movment
 
-            else if (state.IsKeyDown(Keys.Right) && state.IsKeyUp(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            else if (rightPressed && !spacePressed && !upPressed && hasJumped == false && onPlate)
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.None;
                 velocity.X = 1f;
             }
 
-            else if (state.IsKeyDown(Keys.Right) && state.IsKeyDown(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            else if (rightPressed && spacePressed && !upPressed && hasJumped == false && onPlate)
             {
                 player.state = "run";
                 player.effects = SpriteEffects.None;
@@ -130,7 +144,7 @@ namespace Game
             #region jump left
 
             // up + left
-            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Left) && state.IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (upPressed && leftPressed && !spacePressed && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.FlipHorizontally;
                 velocity.Y = -5f;
@@ -139,7 +153,7 @@ namespace Game
             }
 
             // up + left + space
-            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Left) && state.IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (upPressed && leftPressed && spacePressed && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.FlipHorizontally;
                 velocity.Y = -5f;
@@ -152,7 +166,7 @@ namespace Game
             #region jump right
 
             // up + left
-            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Right) && state.IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (upPressed && rightPressed && !spacePressed && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.None;
                 velocity.Y = -5f;
@@ -161,7 +175,7 @@ namespace Game
             }
 
             // up + left + space
-            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Right) && state.IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (upPressed && rightPressed && spacePressed && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.None;
                 velocity.Y = -5f;
@@ -173,13 +187,13 @@ namespace Game
 
             #region jump up
 
-            else if (state.IsKeyDown(Keys.Up) && state.IsKeyUp(Keys.Left) && state.IsKeyUp(Keys.Right) && state.IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (upPressed && !leftPressed && !rightPressed && !spacePressed && hasJumped == false && onPlate == true)
             {
                 velocity.Y = -5f;
                 hasJumped = true;
             }
 
-            else if (state.IsKeyDown(Keys.Up) && state.IsKeyUp(Keys.Left) && state.IsKeyUp(Keys.Right) && state.IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (upPressed && !leftPressed && !rightPressed && spacePressed && hasJumped == false && onPlate == true)
             {
                 velocity.Y = -6f;
                 hasJumped = true;
@@ -195,10 +209,10 @@ namespace Game
                 if (velocity.Y > 0)
                     player.state = "fall";
 
-                if (state.IsKeyDown(Keys.Left))
+                if (leftPressed)
                     player.effects = SpriteEffects.FlipHorizontally;
 
-                if (state.IsKeyDown(Keys.Right))
+                if (rightPressed)
                     player.effects = SpriteEffects.None;
             } 
 
@@ -223,5 +237,26 @@ namespace Game
             player.position += velocity;
 
         }
+
+        bool check_right_key(KeyboardState state)
+        {
+            return state.IsKeyDown(Keys.Right);
+        }
+        
+        bool check_left_key(KeyboardState state)
+        {
+            return state.IsKeyDown(Keys.Left);
+        }
+
+        bool check_up_key(KeyboardState state)
+        {
+            return state.IsKeyDown(Keys.Up);
+        }
+
+        bool check_space_key(KeyboardState state)
+        {
+            return state.IsKeyDown(Keys.Space);
+        }
+
     }
 }

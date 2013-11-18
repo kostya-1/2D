@@ -16,10 +16,10 @@ namespace Game
         #region data
         public Texture2D texture;
         public Vector2 position;
-        public Rectangle? rectungle;
+        protected Rectangle? rectungle;
         Color color;
         float rotation;
-        public Vector2 origin;
+        protected Vector2 origin;
         Vector2 scale;
         public SpriteEffects effects;
         float layer;

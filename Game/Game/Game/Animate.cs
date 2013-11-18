@@ -19,6 +19,8 @@ namespace Game
         public string state;
         public Dictionary<string, Page> states = new Dictionary<string, Page>();
         public int frameIndex = 0;
+        int fps = 6;
+        int i = 0 ;
 
         #endregion
 
@@ -52,8 +54,9 @@ namespace Game
             else
                 this.origin = states[state].origins[frameIndex];
 
-            Thread.Sleep(70);
-            frameIndex++;
+            //Thread.Sleep(70);
+            if (++i % fps == 0)
+                frameIndex++;
             
             base.draw();
         }

@@ -14,7 +14,6 @@ namespace Game
 {
     class Player
     {
-
         #region data
 
         public Animate player;
@@ -50,7 +49,8 @@ namespace Game
 
         void update()
         {
-          
+            KeyboardState state = Keyboard.GetState();
+
             #region loop position
 
             if (player.position.X > Game1.width + 20 )
@@ -90,14 +90,14 @@ namespace Game
 
             #region left movment
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            if (state.IsKeyDown(Keys.Left) && state.IsKeyUp(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.FlipHorizontally;
                 velocity.X = -1f;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            else if (state.IsKeyDown(Keys.Left) && state.IsKeyDown(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "run";
                 player.effects = SpriteEffects.FlipHorizontally;
@@ -108,14 +108,14 @@ namespace Game
 
             #region right movment
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            else if (state.IsKeyDown(Keys.Right) && state.IsKeyUp(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "walk";
                 player.effects = SpriteEffects.None;
                 velocity.X = 1f;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && Keyboard.GetState().IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
+            else if (state.IsKeyDown(Keys.Right) && state.IsKeyDown(Keys.Space) && state.IsKeyUp(Keys.Up) && hasJumped == false && onPlate)
             {
                 player.state = "run";
                 player.effects = SpriteEffects.None;
@@ -130,7 +130,7 @@ namespace Game
             #region jump left
 
             // up + left
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Left) && state.IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.FlipHorizontally;
                 velocity.Y = -5f;
@@ -139,7 +139,7 @@ namespace Game
             }
 
             // up + left + space
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Left) && Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Left) && state.IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.FlipHorizontally;
                 velocity.Y = -5f;
@@ -152,7 +152,7 @@ namespace Game
             #region jump right
 
             // up + left
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Right) && state.IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.None;
                 velocity.Y = -5f;
@@ -161,7 +161,7 @@ namespace Game
             }
 
             // up + left + space
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyDown(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (state.IsKeyDown(Keys.Up) && state.IsKeyDown(Keys.Right) && state.IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
             {
                 player.effects = SpriteEffects.None;
                 velocity.Y = -5f;
@@ -173,13 +173,13 @@ namespace Game
 
             #region jump up
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right) && Keyboard.GetState().IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (state.IsKeyDown(Keys.Up) && state.IsKeyUp(Keys.Left) && state.IsKeyUp(Keys.Right) && state.IsKeyUp(Keys.Space) && hasJumped == false && onPlate == true)
             {
                 velocity.Y = -5f;
                 hasJumped = true;
             }
 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && Keyboard.GetState().IsKeyUp(Keys.Left) && Keyboard.GetState().IsKeyUp(Keys.Right) && Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
+            else if (state.IsKeyDown(Keys.Up) && state.IsKeyUp(Keys.Left) && state.IsKeyUp(Keys.Right) && state.IsKeyDown(Keys.Space) && hasJumped == false && onPlate == true)
             {
                 velocity.Y = -6f;
                 hasJumped = true;
@@ -195,10 +195,10 @@ namespace Game
                 if (velocity.Y > 0)
                     player.state = "fall";
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                if (state.IsKeyDown(Keys.Left))
                     player.effects = SpriteEffects.FlipHorizontally;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                if (state.IsKeyDown(Keys.Right))
                     player.effects = SpriteEffects.None;
             } 
 
